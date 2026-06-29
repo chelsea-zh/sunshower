@@ -1,22 +1,28 @@
 [gd_scene format=3 uid="uid://tcfu1d0i8r4j"]
 
 [ext_resource type="Script" uid="uid://b84id4syop7ig" path="res://scripts/main.gd" id="1_o5qli"]
+[ext_resource type="Texture2D" uid="uid://tvsw7s8jwh7a" path="res://assets/sunshower.png" id="2_0wfyh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y85q1"]
-size = Vector2(2387, 102)
+size = Vector2(2387, 133)
 
 [node name="main" type="Node2D" unique_id=945656846]
 script = ExtResource("1_o5qli")
 
-[node name="rain" type="Node2D" parent="." unique_id=253782188]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=298169936]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_0wfyh")
 
 [node name="ground" type="Area2D" parent="." unique_id=1151809102]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ground" unique_id=1313494746]
-position = Vector2(631.5, 580)
+position = Vector2(631.5, 595.5)
 shape = SubResource("RectangleShape2D_y85q1")
 
 [node name="flowers" type="Node2D" parent="." unique_id=555078695]
 y_sort_enabled = true
+
+[node name="rain" type="Node2D" parent="." unique_id=253782188]
 
 [connection signal="body_entered" from="ground" to="." method="_on_ground_body_entered"]
