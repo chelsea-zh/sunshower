@@ -1,27 +1,35 @@
 [gd_scene format=3 uid="uid://8nf6osnt6kh3"]
 
-[ext_resource type="Texture2D" uid="uid://chllq4nrqcm3b" path="res://icon.svg" id="1_rh3xa"]
 [ext_resource type="Script" uid="uid://c3oo4fodjn3w1" path="res://scripts/raindrop.gd" id="2_elo30"]
+[ext_resource type="Texture2D" uid="uid://fhjk6qda258y" path="res://assets/flower_spritesheet.png" id="2_yjn3f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l04qk"]
+atlas = ExtResource("2_yjn3f")
+region = Rect2(200, 0, 100, 125)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_y85q1"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_rh3xa")
+"texture": SubResource("AtlasTexture_l04qk")
 }],
 "loop": 1,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_y85q1"]
-radius = 59.211487
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mqmli"]
+radius = 30.0
+height = 94.0
 
 [node name="raindrop" type="CharacterBody2D" unique_id=349091514]
 script = ExtResource("2_elo30")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=113981248]
+position = Vector2(-6, -11)
+scale = Vector2(1.14, 1.14)
 sprite_frames = SubResource("SpriteFrames_y85q1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=692689640]
-shape = SubResource("CircleShape2D_y85q1")
+rotation = -0.50490344
+shape = SubResource("CapsuleShape2D_mqmli")

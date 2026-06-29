@@ -4,6 +4,7 @@ var clockwise = true
 
 func _ready() -> void:
 	rotation_degrees = 0
+	$AnimatedSprite2D.frame = 0
 
 func _process(_delta: float) -> void:
 	if clockwise:
