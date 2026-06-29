@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b2mouogki2388" path="res://scripts/flower.gd" id="1_yoh7s"]
 [ext_resource type="Texture2D" uid="uid://fhjk6qda258y" path="res://assets/flower_spritesheet.png" id="2_yoh7s"]
+[ext_resource type="Script" uid="uid://bcnya5wdl7s6t" path="res://scripts/flower_area_2d.gd" id="3_agc10"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_agc10"]
 atlas = ExtResource("2_yoh7s")
@@ -202,6 +203,15 @@ height = 124.0
 y_sort_enabled = true
 script = ExtResource("1_yoh7s")
 
+[node name="Control" type="Control" parent="." unique_id=371137337]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -30.0
+offset_top = -125.0
+offset_right = 30.0
+offset_bottom = -1.0
+mouse_filter = 2
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=113938609]
 position = Vector2(0, -65)
 sprite_frames = SubResource("SpriteFrames_d2dbh")
@@ -212,20 +222,13 @@ position = Vector2(0, -63)
 shape = SubResource("CapsuleShape2D_d2dbh")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1762223315]
+script = ExtResource("3_agc10")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1696289689]
 position = Vector2(0, -63)
 shape = SubResource("CapsuleShape2D_d2dbh")
 
-[node name="Control" type="Control" parent="." unique_id=371137337]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -30.0
-offset_top = -125.0
-offset_right = 30.0
-offset_bottom = -1.0
-mouse_filter = 2
-
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="picked" from="Area2D" to="." method="_on_area_2d_picked"]
