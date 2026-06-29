@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://dyy2foov6h30f"]
+
+[ext_resource type="Texture2D" uid="uid://chllq4nrqcm3b" path="res://icon.svg" id="1_8x8dx"]
+[ext_resource type="Script" uid="uid://b2mouogki2388" path="res://scripts/flower.gd" id="1_yoh7s"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d2dbh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_8x8dx")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d2dbh"]
+radius = 29.0
+height = 124.0
+
+[node name="flower" type="CharacterBody2D" unique_id=852481844]
+y_sort_enabled = true
+script = ExtResource("1_yoh7s")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=113938609]
+position = Vector2(0, -65)
+sprite_frames = SubResource("SpriteFrames_d2dbh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1331420230]
+position = Vector2(0, -63)
+shape = SubResource("CapsuleShape2D_d2dbh")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1762223315]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1696289689]
+position = Vector2(0, -63)
+shape = SubResource("CapsuleShape2D_d2dbh")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
