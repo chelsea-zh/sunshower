@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://brrgchad24ua0"]
+
+[ext_resource type="Texture2D" uid="uid://su28kb7td4ym" path="res://assets/ribbon.png" id="1_p1wi6"]
+[ext_resource type="Script" uid="uid://b45mcni0wbor5" path="res://scripts/bouquet.gd" id="1_xkysr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xkysr"]
+atlas = ExtResource("1_p1wi6")
+region = Rect2(200, 0, 300, 125)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbeu5"]
+atlas = ExtResource("1_p1wi6")
+region = Rect2(200, 125, 300, 125)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y85q1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xkysr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fbeu5")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y85q1"]
+size = Vector2(260, 212)
+
+[node name="bouquet" type="Node2D" unique_id=1922117327]
+script = ExtResource("1_xkysr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=492698789]
+position = Vector2(2, -29)
+sprite_frames = SubResource("SpriteFrames_y85q1")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=533499479]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1288419664]
+position = Vector2(-4, -56)
+shape = SubResource("RectangleShape2D_y85q1")
+
+[node name="Label" type="Label" parent="." unique_id=1649536763]
+offset_left = -61.0
+offset_top = -93.0
+offset_right = 61.0
+offset_bottom = -44.0
+text = "place ur picked 
+flowers here :3"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

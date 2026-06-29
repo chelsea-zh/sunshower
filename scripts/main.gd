@@ -19,6 +19,7 @@ func _input(event: InputEvent) -> void:
 		if randf() > 0.75:
 			var rain_instance = RAIN_SCENE.instantiate()
 			rain_instance.position = Vector2(randi_range(-200, 1150), 100)
+			rain_instance.scale = Vector2.ONE *randf_range(.5, 1)
 			$rain.add_child(rain_instance)
 
 

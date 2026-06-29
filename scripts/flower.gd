@@ -1,8 +1,10 @@
 class_name flower extends CharacterBody2D
 
+var sway = true
 var clockwise = true
 var type = ["daisy", "hydrangea", "orchid", "tulip"]
 var picked = false
+var inbouquet =false
 
 func _ready() -> void:
 	rotation_degrees = 0
@@ -12,14 +14,15 @@ func _ready() -> void:
 	picked = false
 
 func _process(_delta: float) -> void:
-	if clockwise:
-		rotation_degrees += .5
-		if rotation_degrees >= 15:
-			clockwise = false
-	if not clockwise:
-		rotation_degrees -= .5
-		if rotation_degrees <= -15:
-			clockwise = true
+	if sway:
+		if clockwise:
+			rotation_degrees += .5
+			if rotation_degrees >= 15:
+				clockwise = false
+		if not clockwise:
+			rotation_degrees -= .5
+			if rotation_degrees <= -15:
+				clockwise = true
 		
 	if picked:
 		global_position.x = get_global_mouse_position().x
@@ -50,5 +53,7 @@ func _on_area_2d_mouse_exited() -> void:
 func _on_area_2d_picked() -> void:
 	if $AnimatedSprite2D.frame >= 4:
 		picked = not picked
-		print(picked)
+	if inbouquet:
+		global_position = Vector2(randi_range(165, 185), randi_range(362,382))
+		rotation_degrees = randi_range(-25, 25)
 	pass # Replace with function body.

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b84id4syop7ig" path="res://scripts/main.gd" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://tvsw7s8jwh7a" path="res://assets/sunshower.png" id="2_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://brrgchad24ua0" path="res://scenes/bouquet.tscn" id="3_sugp2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y85q1"]
 size = Vector2(2387, 133)
@@ -14,6 +15,14 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("2_0wfyh")
 
+[node name="Label" type="Label" parent="." unique_id=1394001682]
+offset_left = 576.0
+offset_top = 344.0
+offset_right = 1043.0
+offset_bottom = 432.0
+theme_override_font_sizes/font_size = 64
+text = "type for rain :O"
+
 [node name="ground" type="Area2D" parent="." unique_id=1151809102]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ground" unique_id=1313494746]
@@ -22,6 +31,9 @@ shape = SubResource("RectangleShape2D_y85q1")
 
 [node name="flowers" type="Node2D" parent="." unique_id=555078695]
 y_sort_enabled = true
+
+[node name="bouquet" parent="." unique_id=1922117327 instance=ExtResource("3_sugp2")]
+position = Vector2(170, 352)
 
 [node name="rain" type="Node2D" parent="." unique_id=253782188]
 
